@@ -108,7 +108,7 @@ generate_uuids
 
 fail_dot_heroku "$BUILD_DIR"
 fail_dot_heroku_node "$BUILD_DIR"
-fail_invalid_package_json "$BUILD_DIR"
+#fail_invalid_package_json "$BUILD_DIR"
 fail_multiple_lockfiles "$BUILD_DIR"
 fail_iojs_unsupported "$BUILD_DIR"
 warn_prebuilt_modules "$BUILD_DIR"
@@ -185,9 +185,9 @@ fi
 install_bins() {
   local node_engine npm_engine yarn_engine npm_version node_version
 
-  node_engine=$(read_json "$BUILD_DIR/package.json" ".engines.node")
-  npm_engine=$(read_json "$BUILD_DIR/package.json" ".engines.npm")
-  yarn_engine=$(read_json "$BUILD_DIR/package.json" ".engines.yarn")
+  node_engine=$""
+  npm_engine=$""
+  yarn_engine=$""
 
   if [[ "$YARN_2" == "true" && -n "$yarn_engine" ]]; then
     warn "You don't need to specify Yarn engine. Heroku will install the latest Yarn 1.x, so that per project version can be used. More information here: https://yarnpkg.com/getting-started/install#global-install"
